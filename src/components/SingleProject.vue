@@ -11,7 +11,7 @@
                 <span class="material-icons">
                 edit
                 </span>
-                <span class="material-icons">
+                <span class="material-icons" @click="completeProject">
                 done
                 </span>
             </div>
@@ -31,11 +31,32 @@ export default {
         }
     },
     methods:{
-        deleteProject(){
+        deleteProject(){                    //change in server
             let deleteRoute = this.api+this.project.id
             fetch(deleteRoute,{method:"DELETE"})
             .then(()=>{
                 this.$emit("delete",this.project.id)
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+        },
+        completeProject(){                  //change in server
+            let updateCompleteRoute = this.api+this.project.id
+            fetch(updateCompleteRoute,{
+                method:"PATCH",
+                headers:{
+                    "Content-Type" : "application/json"
+                },
+                body:JSON.stringify(
+            //write like js object and JSON.stringify will change it to JSON format
+                    {
+                        complete : !this.project.complete
+                    }
+                )
+            })
+            .then(()=>{
+                this.$emit("complete",this.project.id)
             })
             .catch((err)=>{
                 console.log(err)
