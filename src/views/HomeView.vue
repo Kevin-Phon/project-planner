@@ -31,7 +31,7 @@ export default {
     completeProject(id){                  //change in local pj
       let findProject = this.projects.find(project=>{ //'find' will return an object
         return project.id === id
-      }) //{...} now we have an object from local project(projects)
+      }) //{...} now we have an object from local project(this.projects)
       findProject.complete =! findProject.complete
     }
   },
