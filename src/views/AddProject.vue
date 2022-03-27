@@ -33,7 +33,7 @@ export default {
             )
         })
         .then(()=>{
-            this.$router.push('/')
+            this.$router.push('/') //rediret to home route
         })
         .catch((err)=>{
             console.log(err)
