@@ -18,6 +18,7 @@ export default{
   max-width: 600px;
   margin: 0 auto;
   color: #2c3e50;
+  height: 2000px;
 }
 
 </style>
